@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">BMI</string>
+    <string name="mass_kg">MASS [kg]</string>
+    <string name="height_m">HEIGHT [m]</string>
+    <string name="count">COUNT</string>
+    <string name="title_activity_result_bmi">ResultBmiActivity</string>
+    <string name="bmi_text">BMI</string>
+</resources>
