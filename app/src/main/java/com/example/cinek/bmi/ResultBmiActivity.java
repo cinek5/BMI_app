@@ -31,7 +31,6 @@ public class ResultBmiActivity extends AppCompatActivity {
 
     private void changeBackgroundColor() {
         Intent intent = getIntent();
-        String result = intent.getStringExtra(MainActivity.EXTRA_BMI_RESULT);
         int colorCode = intent.getIntExtra(MainActivity.EXTRA_COLOR, 0);
         findViewById(R.id.bmi_screen).setBackgroundColor(colorCode);
     }

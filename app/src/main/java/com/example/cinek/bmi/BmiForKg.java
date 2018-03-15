@@ -6,21 +6,18 @@ package com.example.cinek.bmi;
 
 public class BmiForKg extends BMI {
 
-    public BmiForKg(double mass, double height) {
-        super(mass, height);
-    }
 
     @Override
-    public double countBMI() {
-        if (dataAreValid()) {
-            return getMass() / (getHeight() * getHeight());
+    public double countBMI(double mass, double height) {
+        if (dataAreValid(mass, height)) {
+            return mass / (height * height);
         } else {
             throw new IllegalArgumentException("Invalid data");
         }
     }
 
     @Override
-    protected boolean dataAreValid() {
-        return getMass() > 0 && getHeight() > 0;
+    protected boolean dataAreValid(double mass, double height) {
+        return mass > 0 && height > 0 && height < 3 && mass < 500;
     }
 }

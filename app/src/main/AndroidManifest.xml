@@ -25,6 +25,16 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.cinek.bmi.MainActivity" />
         </activity>
+        <activity
+            android:name=".AboutAuthorActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_about_author"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/FullscreenTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.cinek.bmi.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
