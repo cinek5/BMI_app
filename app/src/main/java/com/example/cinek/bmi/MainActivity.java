@@ -20,7 +20,6 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    private BMI bmiCounter = new BmiForKg();
     private EditText massInput;
     private EditText heightInput;
     private Switch unitSwitch;
@@ -32,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String SHARED_MASS_INPUT = "massInput";
     public static final String SHARED_HEIGHT_INPUT = "sharedInput";
     public static final String SHARED_IS_IMPERIAL_UNIT = "isImperialUnit";
+    public static final String WRONG_INPUT_MESSAGE = "Wrong input. Check values you have typed.";
     boolean isImperialUnit = false;
 
     @Override
@@ -90,7 +90,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void switchUnitsToImperial() {
-        bmiCounter = new BmiForImperial();
         massText.setText(R.string.mass_lb);
         heightText.setText(R.string.height_ft);
         isImperialUnit = !isImperialUnit;
@@ -99,7 +98,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void switchUnitsToNormal() {
-        bmiCounter = new BmiForKg();
         massText.setText(R.string.mass_kg);
         heightText.setText(R.string.height_m);
         isImperialUnit = !isImperialUnit;
@@ -143,11 +141,12 @@ public class MainActivity extends AppCompatActivity {
                                                try {
                                                    double mass = Double.parseDouble(massInput.getText().toString());
                                                    double height = Double.parseDouble(heightInput.getText().toString());
-                                                   double bmi = bmiCounter.countBMI(mass, height);
-                                                   int color = bmiCounter.getColorInt(bmi);
+                                                   BMI bmiCounter = isImperialUnit ? new BmiForImperial(mass, height) : new BmiForKg(mass, height);
+                                                   double bmi = bmiCounter.countBMI();
+                                                   int color = bmiCounter.getColorInt();
                                                    startDisplayBmiScreen(String.format("%.2f", bmi), color);
                                                } catch (IllegalArgumentException ex) {
-                                                   Toast.makeText(view.getContext(), "Wrong input", Toast.LENGTH_SHORT).show();
+                                                   Toast.makeText(view.getContext(), WRONG_INPUT_MESSAGE, Toast.LENGTH_SHORT).show();
                                                }
 
 

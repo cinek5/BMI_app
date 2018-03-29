@@ -6,14 +6,17 @@ package com.example.cinek.bmi;
 
 public class BmiForImperial extends BMI {
 
+    public BmiForImperial(double mass, double height) {
+        super(mass, height);
+    }
     @Override
-    public double countBMI(double mass, double height) {
-        if (!dataAreValid(mass, height)) throw new IllegalArgumentException("Invalid argument");
+    public double countBMI() {
+        if (!dataAreValid()) throw new IllegalArgumentException(BMI.INVALID_ARG_EX_MESSAGE);
         return mass / (height * height) * 703;
     }
 
     @Override
-    protected boolean dataAreValid(double mass, double height) {
+    protected boolean dataAreValid() {
         return mass > 0 && height > 0;
     }
 }

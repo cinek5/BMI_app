@@ -7,18 +7,27 @@ import android.graphics.Color;
  */
 
 public abstract class BMI {
+    double mass;
+    double height;
 
+    public BMI(double mass, double height) {
+        this.mass = mass;
+        this.height = height;
+    }
 
-    public int getColorInt(double bmi) {
-        if (bmi < 0) throw new IllegalArgumentException("Invalid bmi argument");
+    public static String INVALID_ARG_EX_MESSAGE = "Invalid argument";
+
+    public int getColorInt() {
+        double bmi = countBMI();
+        if (bmi < 0) throw new IllegalArgumentException(BMI.INVALID_ARG_EX_MESSAGE);
         if (bmi < 18.5) return Color.BLUE;
         if (bmi >= 25.0) return Color.RED;
         return Color.GREEN;
     }
 
-    abstract public double countBMI(double mass, double height);
+    abstract public double countBMI();
 
-    abstract protected boolean dataAreValid(double mass, double height);
+    abstract protected boolean dataAreValid();
 
 
 }
