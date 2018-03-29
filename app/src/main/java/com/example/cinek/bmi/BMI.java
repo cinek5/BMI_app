@@ -9,13 +9,13 @@ import android.graphics.Color;
 public abstract class BMI {
     double mass;
     double height;
-
+    public static String INVALID_ARG_EX_MESSAGE = "Invalid argument";
+    
     public BMI(double mass, double height) {
         this.mass = mass;
         this.height = height;
     }
 
-    public static String INVALID_ARG_EX_MESSAGE = "Invalid argument";
 
     public int getColorInt() {
         double bmi = countBMI();
